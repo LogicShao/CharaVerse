@@ -1,0 +1,99 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-level configuration file
+root = true
+
+# Universal settings
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Source code files
+[*.{js,jsx,ts,tsx}]
+indent_size = 2
+max_line_length = 100
+
+# TypeScript type files
+[*.{ts,tsx}]
+indent_size = 2
+
+# JSON configuration files
+[*.json]
+indent_size = 2
+
+# JSON data files (preserve existing format)
+[data/**/*.json]
+indent_size = 2
+
+# Markdown documentation
+[*.md]
+trim_trailing_whitespace = false  # Allow trailing whitespace for line breaks
+max_line_length = 80
+
+# YAML configuration files
+[*.{yml,yaml}]
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+indent_style = tab
+indent_size = 4
+
+# Git related files
+[.gitattributes]
+indent_style = unset
+
+[.gitignore]
+indent_style = unset
+
+# Build artifacts and dependency files (no formatting)
+[dist/**]
+indent_style = unset
+
+[node_modules/**]
+indent_style = unset
+
+[package-lock.json]
+indent_style = unset
+
+# Images and binary files (no processing)
+[*.{png,jpg,jpeg,gif,ico,svg,woff,woff2,ttf,eot}]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+
+# Special files
+[Makefile]
+indent_style = tab
+
+[*.yml]
+indent_size = 2
+
+[*.yaml]
+indent_size = 2
+
+# Test files
+[tests/**/*.{ts,tsx,js,jsx}]
+indent_size = 2
+
+# Configuration files
+[*.config.{js,ts}]
+indent_size = 2
+
+# CSS related files
+[*.{css,scss,sass,less}]
+indent_size = 2
+
+# HTML files
+[*.html]
+indent_size = 2
+
+# XML files
+[*.xml]
+indent_size = 2
