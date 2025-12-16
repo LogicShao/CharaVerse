@@ -33,24 +33,49 @@
   margin: 0;
 }
 
+/* 侧边栏布局容器 */
 .controls {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
+/* 桌面端：侧边栏 + 主内容区 */
 @media (min-width: 1024px) {
   .controls {
-    grid-template-columns: 1fr 320px;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
   }
 }
 
-.searchSection {
+/* 左侧筛选面板 */
+.filterSection {
   width: 100%;
 }
 
-.filterSection {
+@media (min-width: 1024px) {
+  .filterSection {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+}
+
+/* 右侧主内容区：搜索 + 列表 */
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.searchSection {
   width: 100%;
 }
 

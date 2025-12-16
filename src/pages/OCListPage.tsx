@@ -31,6 +31,8 @@ const defaultFilterOptions: FilterOptions = {
   selectedTags: [],
   sortBy: 'date',
   sortOrder: 'desc',
+  gender: undefined,
+  mbti: undefined,
 }
 
 export const OCListPage: FC = () => {
@@ -79,6 +81,16 @@ export const OCListPage: FC = () => {
       result = result.filter((char) =>
         filterOptions.selectedTags.some((tag) => char.metadata.tags.includes(tag))
       )
+    }
+
+    // 性别过滤
+    if (filterOptions.gender) {
+      result = result.filter((char) => char.basic.gender === filterOptions.gender)
+    }
+
+    // MBTI 类型过滤
+    if (filterOptions.mbti) {
+      result = result.filter((char) => char.personality.mbti === filterOptions.mbti)
     }
 
     // 排序
@@ -160,10 +172,7 @@ export const OCListPage: FC = () => {
       </div>
 
       <div className={styles.controls}>
-        <div className={styles.searchSection}>
-          <SearchBar value={searchQuery} onChange={setSearchQuery} />
-        </div>
-
+        {/* 左侧筛选面板 */}
         <div className={styles.filterSection}>
           <FilterPanel
             availableTags={availableTags}
@@ -172,45 +181,52 @@ export const OCListPage: FC = () => {
             onReset={handleResetFilter}
           />
         </div>
-      </div>
 
-      <div className={styles.content}>
-        {characters.length === 0 && !loading ? (
-          <Card variant="bordered">
-            <CardBody>
-              <div className={styles.emptyState}>
-                <div className={styles.emptyIcon}>📭</div>
-                <h3 className={styles.emptyTitle}>暂无角色数据</h3>
-                <p className={styles.emptyDescription}>
-                  当前还没有任何角色数据。请点击"加载示例数据"按钮来加载示例角色。
-                </p>
-                <div className={styles.emptyActions}>
-                  <Button
-                    onClick={handleInitializeMockData}
-                    variant="primary"
-                    icon={<Database />}
-                  >
-                    加载示例数据
-                  </Button>
-                </div>
-                <div className={styles.emptyHint}>
-                  <p>提示：</p>
-                  <ul>
-                    <li>示例数据包含 3 个完整的角色信息</li>
-                    <li>数据将保存在浏览器的 LocalStorage 中</li>
-                    <li>创建角色功能将在阶段 6 实现</li>
-                  </ul>
-                </div>
-              </div>
-            </CardBody>
-          </Card>
-        ) : (
-          <OCGrid
-            characters={filteredCharacters}
-            loading={loading}
-            onCardClick={handleCardClick}
-          />
-        )}
+        {/* 右侧主内容区：搜索 + 列表 */}
+        <div className={styles.mainContent}>
+          <div className={styles.searchSection}>
+            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+          </div>
+
+          <div className={styles.content}>
+            {characters.length === 0 && !loading ? (
+              <Card variant="bordered">
+                <CardBody>
+                  <div className={styles.emptyState}>
+                    <div className={styles.emptyIcon}>📭</div>
+                    <h3 className={styles.emptyTitle}>暂无角色数据</h3>
+                    <p className={styles.emptyDescription}>
+                      当前还没有任何角色数据。请点击"加载示例数据"按钮来加载示例角色。
+                    </p>
+                    <div className={styles.emptyActions}>
+                      <Button
+                        onClick={handleInitializeMockData}
+                        variant="primary"
+                        icon={<Database />}
+                      >
+                        加载示例数据
+                      </Button>
+                    </div>
+                    <div className={styles.emptyHint}>
+                      <p>提示：</p>
+                      <ul>
+                        <li>示例数据包含 3 个完整的角色信息</li>
+                        <li>数据将保存在浏览器的 LocalStorage 中</li>
+                        <li>创建角色功能将在阶段 6 实现</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+            ) : (
+              <OCGrid
+                characters={filteredCharacters}
+                loading={loading}
+                onCardClick={handleCardClick}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,84 +1,127 @@
 /**
- * 角色详情页面（占位页面）
- * 阶段 4 暂时使用占位页面，阶段 5 将实现完整功能
+ * OC 详情页面
+ * 展示角色的完整信息，包含多个Tab面板
  */
 
-import { useEffect } from 'react'
 import type { FC } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
 import { useCharacterStore } from '@/stores/characterStore'
-import { Button, Card, CardBody } from '@/components'
-import styles from './OCDetailPage.module.css'
+import { OCDetailLayout } from '@/components/OCDetail'
+import { BasicInfoPanel } from '@/components/OCDetail/BasicInfoPanel'
+import { AppearancePanel } from '@/components/OCDetail/AppearancePanel'
+import { PersonalityPanel } from '@/components/OCDetail/PersonalityPanel'
+import { BackgroundPanel } from '@/components/OCDetail/BackgroundPanel'
+import { SkillsPanel } from '@/components/OCDetail/SkillsPanel'
+import { RelationshipsPanel } from '@/components/OCDetail/RelationshipsPanel'
+import { WardrobePanel } from '@/components/OCDetail/WardrobePanel'
+import { GalleryPanel } from '@/components/OCDetail/GalleryPanel'
 
 export const OCDetailPage: FC = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const { currentCharacter, loading, loadCharacter } = useCharacterStore()
+  const { currentCharacter, loading, error, loadCharacter } = useCharacterStore()
+  const [activeTab, setActiveTab] = useState('basic')
 
+  // 加载角色数据
   useEffect(() => {
     if (id) {
       loadCharacter(id)
     }
   }, [id, loadCharacter])
 
+  // 返回列表页
   const handleBack = () => {
     navigate('/')
   }
 
-  if (loading) {
+  // 编辑角色（暂时占位，阶段6将实现编辑功能）
+  const handleEdit = () => {
+    // TODO: 阶段6实现编辑功能
+    console.log('编辑功能将在阶段6实现')
+  }
+
+  // 错误状态
+  if (error) {
     return (
-      <div className={styles.container}>
-        <div className={styles.loading}>加载中...</div>
+      <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <h2>加载失败</h2>
+        <p>{error}</p>
+        <button onClick={handleBack}>返回列表</button>
       </div>
     )
   }
 
+  // 未找到角色
+  if (!loading && !currentCharacter) {
+    return (
+      <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <h2>角色不存在</h2>
+        <p>未找到ID为 {id} 的角色</p>
+        <button onClick={handleBack}>返回列表</button>
+      </div>
+    )
+  }
+
+  // 加载中或未加载数据
   if (!currentCharacter) {
-    return (
-      <div className={styles.container}>
-        <Card>
-          <CardBody>
-            <div className={styles.notFound}>
-              <h2>角色未找到</h2>
-              <p>ID: {id}</p>
-              <Button onClick={handleBack} icon={<ArrowLeft />}>
-                返回列表
-              </Button>
-            </div>
-          </CardBody>
-        </Card>
-      </div>
-    )
+    return null
   }
 
-  const displayName = currentCharacter.basic.nameCn || currentCharacter.basic.nameEn
+  // 配置Tab面板
+  const tabs = [
+    {
+      key: 'basic',
+      label: '基本信息',
+      content: <BasicInfoPanel character={currentCharacter} />,
+    },
+    {
+      key: 'appearance',
+      label: '外观',
+      content: <AppearancePanel character={currentCharacter} />,
+    },
+    {
+      key: 'personality',
+      label: '性格',
+      content: <PersonalityPanel character={currentCharacter} />,
+    },
+    {
+      key: 'background',
+      label: '背景',
+      content: <BackgroundPanel character={currentCharacter} />,
+    },
+    {
+      key: 'skills',
+      label: '技能',
+      content: <SkillsPanel character={currentCharacter} />,
+    },
+    {
+      key: 'relationships',
+      label: '关系',
+      content: <RelationshipsPanel character={currentCharacter} />,
+    },
+    {
+      key: 'wardrobe',
+      label: '服装',
+      content: <WardrobePanel character={currentCharacter} />,
+    },
+    {
+      key: 'gallery',
+      label: '媒体',
+      content: <GalleryPanel character={currentCharacter} />,
+    },
+  ]
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <Button onClick={handleBack} variant="ghost" icon={<ArrowLeft />}>
-          返回列表
-        </Button>
-        <h1 className={styles.title}>{displayName}</h1>
-      </div>
-
-      <Card>
-        <CardBody>
-          <div className={styles.placeholder}>
-            <h2>详情页面开发中</h2>
-            <p>阶段 5 将实现完整的角色详情展示功能</p>
-            <div className={styles.info}>
-              <p><strong>ID:</strong> {currentCharacter.basic.id}</p>
-              <p><strong>中文名:</strong> {currentCharacter.basic.nameCn}</p>
-              <p><strong>英文名:</strong> {currentCharacter.basic.nameEn}</p>
-              <p><strong>MBTI:</strong> {currentCharacter.personality.mbti}</p>
-              <p><strong>标签:</strong> {currentCharacter.metadata.tags.join('、')}</p>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
-    </div>
+    <OCDetailLayout
+      characterName={currentCharacter.basic.nameCn || currentCharacter.basic.nameEn}
+      tabs={tabs}
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+      onBack={handleBack}
+      onEdit={handleEdit}
+      loading={loading}
+    />
   )
 }
 

@@ -3,6 +3,27 @@
   border: 1px solid var(--color-neutral-200, var(--color-gray-200));
   border-radius: var(--radius-md);
   padding: 1.25rem;
+  /* 侧边栏模式下添加最小高度 */
+  min-height: 200px;
+}
+
+/* 添加自定义滚动条样式 */
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
 }
 
 .header {

@@ -1,0 +1,119 @@
+.layout {
+  min-height: 100vh;
+  background-color: var(--color-neutral-50);
+}
+
+.header {
+  background-color: white;
+  border-bottom: 1px solid var(--color-neutral-200);
+  padding: var(--spacing-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky);
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.breadcrumbLink {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  color: var(--color-neutral-400);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-neutral-900);
+  font-weight: var(--font-weight-medium);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-6) var(--spacing-4);
+}
+
+.tabsContainer {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-lg);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .headerContent,
+  .content {
+    padding: 0 var(--spacing-3);
+  }
+
+  .titleRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+
+  .tabsContainer {
+    padding: var(--spacing-3);
+  }
+}

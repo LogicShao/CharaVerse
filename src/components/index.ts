@@ -21,6 +21,10 @@ export type {
 export { Input } from './Input'
 export type { InputProps, InputSize, InputStatus } from './Input'
 
+// Select 组件
+export { Select } from './Select'
+export type { SelectProps, SelectOption, SelectSize, SelectStatus } from './Select'
+
 // Tag 组件
 export { Tag } from './Tag'
 export type { TagProps, TagVariant, TagSize } from './Tag'

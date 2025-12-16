@@ -1,0 +1,76 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabNav {
+  display: flex;
+  gap: var(--spacing-2);
+  border-bottom: 2px solid var(--color-neutral-200);
+  margin-bottom: var(--spacing-4);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.tabNav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabNav::-webkit-scrollbar-thumb {
+  background-color: var(--color-neutral-300);
+  border-radius: var(--radius-sm);
+}
+
+.tabButton {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-600);
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+}
+
+.tabButton:hover:not(:disabled) {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+.tabButton.active {
+  color: var(--color-primary-600);
+  border-bottom-color: var(--color-primary-600);
+}
+
+.tabButton:disabled {
+  color: var(--color-neutral-400);
+  cursor: not-allowed;
+}
+
+.tabContent {
+  animation: fadeIn var(--transition-base);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .tabButton {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+}

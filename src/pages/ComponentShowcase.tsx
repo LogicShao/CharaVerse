@@ -5,13 +5,65 @@
 
 import { useState } from 'react'
 import type { FC } from 'react'
-import { Button, Card, CardHeader, CardBody, CardFooter, Input, Tag } from '@/components'
+import { User, Mail, MapPin } from 'lucide-react'
+import { Button, Card, CardHeader, CardBody, CardFooter, Input, Select, Tag } from '@/components'
+import type { SelectOption } from '@/components'
 
 /**
  * 组件展示页面
  */
 const ComponentShowcase: FC = () => {
   const [inputValue, setInputValue] = useState('')
+  const [selectValue, setSelectValue] = useState<string>()
+  const [searchableValue, setSearchableValue] = useState<string>()
+  const [groupedValue, setGroupedValue] = useState<string>()
+
+  // 基础选项
+  const basicOptions: SelectOption[] = [
+    { value: '1', label: '选项一' },
+    { value: '2', label: '选项二' },
+    { value: '3', label: '选项三' },
+    { value: '4', label: '选项四（禁用）', disabled: true },
+    { value: '5', label: '选项五' },
+  ]
+
+  // 带图标的选项
+  const iconOptions: SelectOption[] = [
+    { value: 'admin', label: '管理员', icon: <User size={18} /> },
+    { value: 'editor', label: '编辑者', icon: <Mail size={18} /> },
+    { value: 'viewer', label: '查看者', icon: <MapPin size={18} /> },
+  ]
+
+  // 带描述的选项
+  const descriptionOptions: SelectOption[] = [
+    {
+      value: 'react',
+      label: 'React',
+      description: 'JavaScript 库，用于构建用户界面',
+    },
+    {
+      value: 'vue',
+      label: 'Vue',
+      description: '渐进式 JavaScript 框架',
+    },
+    {
+      value: 'angular',
+      label: 'Angular',
+      description: 'TypeScript 框架，用于构建企业应用',
+    },
+  ]
+
+  // 分组选项
+  const groupedOptions: SelectOption[] = [
+    { value: 'html', label: 'HTML', group: '前端基础' },
+    { value: 'css', label: 'CSS', group: '前端基础' },
+    { value: 'javascript', label: 'JavaScript', group: '前端基础' },
+    { value: 'react', label: 'React', group: '前端框架' },
+    { value: 'vue', label: 'Vue', group: '前端框架' },
+    { value: 'angular', label: 'Angular', group: '前端框架' },
+    { value: 'nodejs', label: 'Node.js', group: '后端技术' },
+    { value: 'express', label: 'Express', group: '后端技术' },
+  ]
 
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -132,6 +184,121 @@ const ComponentShowcase: FC = () => {
                 <Input size="lg" placeholder="Large" />
               </div>
             </div>
+          </CardBody>
+        </Card>
+      </section>
+
+      {/* Select 组件展示 */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h2>Select 下拉选择组件</h2>
+
+        <Card variant="bordered" style={{ marginBottom: '1.5rem' }}>
+          <CardHeader title="基础用法" />
+          <CardBody>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <Select
+                label="基础下拉选择"
+                placeholder="请选择选项"
+                options={basicOptions}
+                value={selectValue}
+                onChange={setSelectValue}
+              />
+
+              <Select
+                label="必填下拉选择"
+                placeholder="请选择选项"
+                options={basicOptions}
+                required
+                helperText="这是一个必填字段"
+              />
+
+              <Select
+                label="可清空"
+                placeholder="请选择选项"
+                options={basicOptions}
+                clearable
+              />
+
+              <Select
+                label="错误状态"
+                placeholder="请选择选项"
+                options={basicOptions}
+                status="error"
+                errorText="请选择一个有效的选项"
+              />
+            </div>
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered" style={{ marginBottom: '1.5rem' }}>
+          <CardHeader title="尺寸变体" />
+          <CardBody>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <Select
+                size="sm"
+                placeholder="小尺寸"
+                options={basicOptions}
+              />
+              <Select
+                size="md"
+                placeholder="中等尺寸"
+                options={basicOptions}
+              />
+              <Select
+                size="lg"
+                placeholder="大尺寸"
+                options={basicOptions}
+              />
+            </div>
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered" style={{ marginBottom: '1.5rem' }}>
+          <CardHeader title="带图标选项" />
+          <CardBody>
+            <Select
+              label="用户角色"
+              placeholder="请选择角色"
+              options={iconOptions}
+            />
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered" style={{ marginBottom: '1.5rem' }}>
+          <CardHeader title="带描述选项" />
+          <CardBody>
+            <Select
+              label="选择技术栈"
+              placeholder="请选择技术栈"
+              options={descriptionOptions}
+            />
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered" style={{ marginBottom: '1.5rem' }}>
+          <CardHeader title="可搜索下拉选择" />
+          <CardBody>
+            <Select
+              label="搜索选择"
+              placeholder="请选择或搜索"
+              options={groupedOptions}
+              searchable
+              value={searchableValue}
+              onChange={setSearchableValue}
+            />
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered">
+          <CardHeader title="分组选项" />
+          <CardBody>
+            <Select
+              label="技术分类"
+              placeholder="请选择技术"
+              options={groupedOptions}
+              value={groupedValue}
+              onChange={setGroupedValue}
+            />
           </CardBody>
         </Card>
       </section>

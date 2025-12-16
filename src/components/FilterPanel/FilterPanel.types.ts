@@ -9,6 +9,10 @@ export interface FilterOptions {
   sortBy: 'name' | 'date' | 'updated'
   /** 排序顺序 */
   sortOrder: 'asc' | 'desc'
+  /** 性别筛选 */
+  gender?: string
+  /** MBTI 类型筛选 */
+  mbti?: string
 }
 
 export interface FilterPanelProps {

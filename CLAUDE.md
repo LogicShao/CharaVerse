@@ -6,8 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 CharaVerse is an OC (Original Character) management system and card display application built with React 19 + TypeScript. The project uses a staged development approach where each stage is independently functional.
 
-**Current Stage**: Stage 3 - Data Service Layer (Completed)
-**Next Stage**: Stage 4 - OC List Page
+**Current Stage**: Stage 5 - OC Detail Page (Completed)
+**Next Stage**: Stage 6 - Data Editing Functionality
+
+> **Note**: Check `docs/COMPLETED_STAGES.md` for the latest stage completion status.
 
 ## Common Commands
 
@@ -147,8 +149,9 @@ useEffect(() => {
 ### Component System
 
 **Component Categories**:
-- **Base Components**: Button, Card, Input, Tag (with CSS Modules)
+- **Base Components**: Button, Card, Input, Tag, Select, Tabs (with CSS Modules)
 - **Business Components**: OCCardPreview, SearchBar, FilterPanel, OCGrid
+- **Detail Components**: OCDetailLayout, BasicInfoPanel, AppearancePanel, PersonalityPanel, BackgroundPanel, SkillsPanel, RelationshipsPanel, WardrobePanel, GalleryPanel
 - **Page Components**: OCListPage, OCDetailPage, ComponentShowcase, DataServiceDemo
 
 **Component Structure Pattern**:
@@ -220,7 +223,24 @@ import { Button } from '../../components/Button'
 - **Application Code**: `tsconfig.app.json` with `resolveJsonModule: true` for JSON imports
 - **Build Tooling**: `tsconfig.node.json` for Vite and other Node.js tools
 - **Testing**: `tsconfig.test.json` for Vitest configuration
-- **Important**: `erasableSyntaxOnly: true` is enabled - avoid parameter properties in constructors
+- **Important Flags**:
+  - `verbatimModuleSyntax: true` - **Always use `import type` for type-only imports**
+  - `erasableSyntaxOnly: true` - Avoid parameter properties in constructors
+  - `strict: true` - Enables all strict type-checking options
+
+**Type Import Rules**:
+```typescript
+// Correct - use 'import type' for types
+import type { Character } from '@/types/character'
+import type { FC } from 'react'
+
+// Correct - regular import for values
+import { Button } from '@/components/Button'
+import { useState } from 'react'
+
+// Incorrect - will cause build errors with verbatimModuleSyntax
+import { Character } from '@/types/character'  // Error if Character is a type
+```
 
 ### Data Validation Pattern
 
@@ -377,3 +397,48 @@ Each stage builds on previous stages and must be independently runnable.
 3. **Component modularity**: Single responsibility, CSS Modules for styling
 4. **Error handling**: Custom error classes with specific error codes
 5. **Data validation**: Zod schemas for runtime type safety
+6. **Type imports**: Always use `import type` for type-only imports (required by `verbatimModuleSyntax`)
+
+## Common Development Scenarios
+
+### Adding a New Component
+
+1. Create component directory: `src/components/ComponentName/`
+2. Create files:
+   - `ComponentName.tsx` - Component implementation
+   - `ComponentName.module.css` - CSS Modules styles
+   - `ComponentName.types.ts` - TypeScript type definitions
+   - `index.ts` - Export file
+3. Follow the component pattern (see Component System section)
+4. Export from `src/components/index.ts`
+5. Use `import type` for all type imports
+
+### Working with Character Data
+
+1. All Character data operations go through `characterService`
+2. Use Zustand store (`useCharacterStore`) in components
+3. Always validate data with Zod schemas before saving
+4. Field names must match `Character` interface exactly (see Type Safety Notes)
+
+### Debugging Type Errors
+
+1. Run `npm run build` to see all TypeScript errors
+2. Check if using `import type` for type-only imports
+3. Verify field names match Character interface definition
+4. Use type guards instead of `any` type assertions
+
+### Testing Changes
+
+```bash
+# Type checking
+npm run build
+
+# Linting
+npm run lint
+
+# Unit tests
+npm run test
+
+# Development server
+npm run dev
+```
