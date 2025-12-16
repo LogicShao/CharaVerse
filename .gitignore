@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Character data directory (exclude from version control)
+/data/characters/
+
+# nul file may be mistaskenly created on Windows systems and tracked by JetBrains IDEs
+nul

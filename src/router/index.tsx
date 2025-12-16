@@ -11,6 +11,8 @@ import type { FC } from 'react'
 const Home = lazy(() => import('@/pages/Home'))
 const ComponentShowcase = lazy(() => import('@/pages/ComponentShowcase'))
 const DataServiceDemo = lazy(() => import('@/pages/DataServiceDemo'))
+const OCListPage = lazy(() => import('@/pages/OCListPage'))
+const OCDetailPage = lazy(() => import('@/pages/OCDetailPage'))
 
 // 加载中组件
 const LoadingFallback: FC = () => (
@@ -63,10 +65,28 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <Suspense fallback={<LoadingFallback />}>
+        <OCListPage />
+      </Suspense>
+    ),
+    errorElement: <ErrorBoundary error={new Error('列表页面加载失败')} />
+  },
+  {
+    path: '/characters/:id',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <OCDetailPage />
+      </Suspense>
+    ),
+    errorElement: <ErrorBoundary error={new Error('详情页面加载失败')} />
+  },
+  {
+    path: '/home',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
         <Home />
       </Suspense>
     ),
-    errorElement: <ErrorBoundary error={new Error('页面加载失败')} />
+    errorElement: <ErrorBoundary error={new Error('首页加载失败')} />
   },
   {
     path: '/components',

@@ -261,12 +261,21 @@ export const mediaAssetSchema = z.object({
 })
 
 export const mediaAssetsSchema = z.object({
+  profileImage: z.string().nullable().default(null),
+  gallery: z.array(z.string()).default([]),
+  voiceClaim: z.string().nullable().default(null),
+  themeSong: z.string().nullable().default(null),
   assets: z.array(mediaAssetSchema).default([]),
 })
 
 // ============= Part K: 元数据块 Schema =============
 
 export const metadataSchema = z.object({
+  tags: z.array(z.string()).default([]),
+  isPublic: z.boolean().default(true),
+  isNSFW: z.boolean().default(false),
+  language: z.string().default('zh-CN'),
+  contentWarnings: z.array(z.string()).default([]),
   creatorInfo: z.object({
     name: z.string().min(1, '创作者名称不能为空'),
     contact: z.string().optional(),

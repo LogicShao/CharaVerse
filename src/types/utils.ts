@@ -346,9 +346,18 @@ export function createNewCharacter(
       tags: [],
     },
     media: {
+      profileImage: null,
+      gallery: [],
+      voiceClaim: null,
+      themeSong: null,
       assets: [],
     },
     metadata: {
+      tags: [],
+      isPublic: true,
+      isNSFW: false,
+      language: 'zh-CN',
+      contentWarnings: [],
       creatorInfo: {
         name: creatorName,
       },

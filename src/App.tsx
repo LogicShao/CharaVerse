@@ -4,8 +4,8 @@
  */
 
 import { AppRouter } from '@/router'
-import './styles/global.css'
 import './styles/variables.css'
+import './styles/global.css'
 
 function App() {
   return <AppRouter />

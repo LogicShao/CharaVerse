@@ -451,7 +451,15 @@ export interface MediaAsset {
  * 媒体资源信息
  */
 export interface MediaAssets {
-    /** 媒体资源列表 */
+    /** 头像图片URL */
+    profileImage: URL | null
+    /** 图片画廊 */
+    gallery: URL[]
+    /** 声优或配音艺术家 */
+    voiceClaim: string | null
+    /** 主题曲 */
+    themeSong: string | null
+    /** 媒体资源列表（完整版） */
     assets: MediaAsset[]
 }
 
@@ -461,6 +469,16 @@ export interface MediaAssets {
  * 元数据信息
  */
 export interface Metadata {
+    /** 标签列表（用于分类和搜索） */
+    tags: string[]
+    /** 是否公开 */
+    isPublic: boolean
+    /** 是否包含成人内容 */
+    isNSFW: boolean
+    /** 语言 */
+    language: string
+    /** 内容警告 */
+    contentWarnings: string[]
     /** 创建者信息（冗余存储，便于查询） */
     creatorInfo: {
         name: string

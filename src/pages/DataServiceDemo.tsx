@@ -37,17 +37,26 @@ const DataServiceDemo: FC = () => {
     try {
       await initializeFromMockData(mockCharacters)
       setInitialized(true)
-    } catch (err) {
-      console.error('初始化失败:', err)
+    } catch (err: unknown) {
+      // 安全地记录错误
+      if (err instanceof Error) {
+        console.error('初始化失败:', err.message)
+      } else {
+        console.error('初始化失败:', String(err))
+      }
     }
   }
 
-  // 加载数据 — useCallback 保持引用稳定，避免 useEffect 缺失依赖警告
+  // 加载数据 — 使用 useCallback 保持引用稳定，满足 useEffect 依赖规则
   const handleLoad = useCallback(async () => {
     try {
       await loadCharacters()
-    } catch (err) {
-      console.error('加载失败:', err)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('加载失败:', err.message)
+      } else {
+        console.error('加载失败:', String(err))
+      }
     }
   }, [loadCharacters])
 
@@ -59,14 +68,18 @@ const DataServiceDemo: FC = () => {
 
     try {
       await deleteCharacter(id)
-    } catch (err) {
-      console.error('删除失败:', err)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('删除失败:', err.message)
+      } else {
+        console.error('删除失败:', String(err))
+      }
     }
   }
 
   // 组件挂载时加载数据
   useEffect(() => {
-    handleLoad()
+    void handleLoad()
   }, [handleLoad])
 
   return (

@@ -1,0 +1,115 @@
+.card {
+  cursor: pointer;
+  transition: all var(--transition-normal, var(--transition-base));
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.avatarSection {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+}
+
+.avatarPlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: var(--color-primary-400);
+  user-select: none;
+}
+
+.avatarImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 0.75rem;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.4;
+}
+
+.nameEn {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.nickname {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  background: var(--color-neutral-100, var(--color-gray-100));
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+
+.info {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-neutral-200, var(--color-gray-200));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
+.mbti {
+  font-weight: 600;
+  color: var(--color-primary-600);
+}
+
+/* Provide fallback for any implicit --color-white usage by components reading this file */
+:root {
+  --_fallback-color-white: var(--color-white, #ffffff);
+}

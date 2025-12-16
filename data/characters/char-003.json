@@ -291,6 +291,10 @@
     ]
   },
   "media": {
+    "profileImage": null,
+    "gallery": [],
+    "voiceClaim": null,
+    "themeSong": null,
     "assets": [
       {
         "type": "avatar",
@@ -316,6 +320,15 @@
     ]
   },
   "metadata": {
+    "tags": [
+      "奇幻",
+      "法师",
+      "女性"
+    ],
+    "isPublic": true,
+    "isNSFW": false,
+    "language": "zh-CN",
+    "contentWarnings": [],
     "creatorInfo": {
       "name": "星辰创作者",
       "contact": "creator@stardust.com"
@@ -356,11 +369,6 @@
       "favoriteColor": "紫色",
       "birthSeason": "冬季",
       "magicAffinity": "星象"
-    },
-    "tags": [
-      "奇幻",
-      "法师",
-      "女性"
-    ]
+    }
   }
 }

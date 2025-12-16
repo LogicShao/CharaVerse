@@ -30,6 +30,15 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
+  /* 兼容性别名（为组件库或旧代码提供的变量名） */
+  --color-white: #ffffff;
+  --color-neutral-50: var(--color-gray-50);
+  --color-neutral-100: var(--color-gray-100);
+  --color-neutral-200: var(--color-gray-200);
+  --color-neutral-300: var(--color-gray-300);
+  --color-neutral-400: var(--color-gray-400);
+  --color-neutral-500: var(--color-gray-500);
+
   /* 语义色 - 成功/警告/错误/信息 */
   --color-success-50: #f0fdf4;
   --color-success-500: #22c55e;
@@ -149,6 +158,8 @@
 
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* compatibility alias used by some components */
+  --transition-normal: var(--transition-base);
   --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ==================== Z-Index 层级 ==================== */
