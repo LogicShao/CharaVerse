@@ -29,7 +29,8 @@ npm run lint
 
 ## 文档
 
-- [开发指南](.claude/CLAUDE.md) - 编码规范、项目结构说明
+- [架构指南](CLAUDE.md) - 架构概览、关键模式、常用命令
+- [项目状态](.claude/STATUS.md) - 当前阶段、已完成工作、下一步计划
 - [实施计划](docs/IMPLEMENTATION_PLAN.md) - 完整的分阶段实施计划
 - [已完成阶段](docs/COMPLETED_STAGES.md) - 阶段完成记录
 - [项目设计](docs/PROJECT.md) - 详细的项目需求和设计文档

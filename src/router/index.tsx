@@ -10,6 +10,7 @@ import type { FC } from 'react'
 // 页面组件懒加载
 const Home = lazy(() => import('@/pages/Home'))
 const ComponentShowcase = lazy(() => import('@/pages/ComponentShowcase'))
+const DataServiceDemo = lazy(() => import('@/pages/DataServiceDemo'))
 
 // 加载中组件
 const LoadingFallback: FC = () => (
@@ -75,6 +76,15 @@ const router = createBrowserRouter([
       </Suspense>
     ),
     errorElement: <ErrorBoundary error={new Error('组件展示页面加载失败')} />
+  },
+  {
+    path: '/data-demo',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <DataServiceDemo />
+      </Suspense>
+    ),
+    errorElement: <ErrorBoundary error={new Error('数据服务测试页面加载失败')} />
   }
 ])
 

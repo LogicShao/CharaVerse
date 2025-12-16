@@ -1,0 +1,392 @@
+{
+  "basic": {
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "nameEn": "Aria Morningstar",
+    "nameCn": "艾莉娅·晨星",
+    "nicknames": [
+      "星辰守护者",
+      "Aria"
+    ],
+    "gender": "female",
+    "createdAt": "2025-12-15T10:30:00.000Z",
+    "updatedAt": "2025-12-15T14:45:00.000Z",
+    "creator": {
+      "name": "星辰创作者",
+      "contact": "creator@stardust.com"
+    },
+    "schemaVersion": "1.0.0"
+  },
+  "appearance": {
+    "body": {
+      "age": 24,
+      "biologicalAge": 22,
+      "height": 168,
+      "weight": 55,
+      "bodyType": "athletic",
+      "skinTone": "fair",
+      "skinTexture": "光滑细腻"
+    },
+    "face": {
+      "faceShape": "oval",
+      "eyeShape": "almond",
+      "eyeColor": "purple",
+      "eyebrowShape": "细长弯眉",
+      "eyebrowColor": "black",
+      "noseShape": "小巧挺直",
+      "lipColor": "pink",
+      "lipThickness": "适中"
+    },
+    "hair": {
+      "primaryColor": "silver",
+      "secondaryColor": "purple",
+      "length": "long",
+      "style": "wavy",
+      "description": "银色短发",
+      "texture": "柔软顺滑"
+    },
+    "facialMarks": [
+      {
+        "type": "birthmark",
+        "location": "左眼角下方",
+        "size": "小",
+        "story": "天生的星形胎记"
+      }
+    ],
+    "accessories": [
+      {
+        "type": "耳环",
+        "description": "星星形状的银色耳环",
+        "material": "银",
+        "color": "银色"
+      },
+      {
+        "type": "项链",
+        "description": "月亮吊坠项链",
+        "material": "银",
+        "color": "银色"
+      }
+    ],
+    "bodyHair": "几乎没有体毛"
+  },
+  "wardrobe": {
+    "outfits": [
+      {
+        "name": "星月法师袍",
+        "description": "深紫色长袍，绣有银色星月图案，带有兜帽",
+        "primaryColor": "#4B0082",
+        "secondaryColor": "#9370DB",
+        "style": "fantasy",
+        "story": "在星月祭典上穿着的正式法师袍",
+        "isDefault": true
+      },
+      {
+        "name": "日常便服",
+        "description": "简约的白色衬衫和深蓝色长裙",
+        "primaryColor": "#FFFFFF",
+        "secondaryColor": "#00008B",
+        "style": "casual",
+        "story": "平日研究魔法时的穿着",
+        "isDefault": false
+      }
+    ],
+    "mainAccessories": [
+      {
+        "type": "法杖",
+        "description": "顶端镶嵌紫色水晶的橡木法杖",
+        "material": "橡木、紫水晶",
+        "color": "棕色、紫色"
+      }
+    ],
+    "signatureWeapon": {
+      "name": "星月法杖",
+      "description": "传承自星月家族的古老法杖，能召唤星辰之力",
+      "type": "魔法武器"
+    }
+  },
+  "personality": {
+    "mbti": "INTJ",
+    "zodiac": "pisces",
+    "bloodType": "AB",
+    "coreDescription": "理性、独立、富有正义感的网络安全专家",
+    "traits": [
+      {
+        "name": "理性",
+        "description": "逻辑思维强",
+        "isPositive": true,
+        "intensity": 5
+      },
+      {
+        "name": "独立",
+        "description": "独立自主",
+        "isPositive": true,
+        "intensity": 5
+      },
+      {
+        "name": "好奇",
+        "description": "对技术充满好奇",
+        "isPositive": true,
+        "intensity": 4
+      }
+    ],
+    "motivation": "保护网络安全，追查父亲死亡真相",
+    "psychology": {
+      "mainFear": "失去控制",
+      "coreDesire": "保护网络安全",
+      "trauma": "小时候目睹流星雨时与家人失散",
+      "defenseMechanism": "沉浸在星象研究中逃避现实"
+    },
+    "expression": {
+      "speechHabits": [
+        "说话轻柔",
+        "经常引用星象术语"
+      ],
+      "catchphrases": [
+        "让我看看代码"
+      ],
+      "actionStyle": "谨慎而优雅",
+      "emotionalExpression": "内敛但深刻",
+      "bodyLanguage": [
+        "仰望星空",
+        "手指轻触法杖"
+      ]
+    }
+  },
+  "background": {
+    "birthplace": "新东京市",
+    "socialBackground": "星象法师世家",
+    "family": [
+      {
+        "relationship": "父亲",
+        "name": "星陨",
+        "description": "著名的星象大法师",
+        "isAlive": true
+      },
+      {
+        "relationship": "母亲",
+        "name": "月华",
+        "description": "月亮祭司",
+        "isAlive": true
+      },
+      {
+        "relationship": "哥哥",
+        "name": "星辉",
+        "description": "太阳骑士",
+        "isAlive": true
+      }
+    ],
+    "childhood": "在星月山谷长大，从小学习星象魔法，性格内向但好奇心强",
+    "education": "星月魔法学院毕业，专攻星象魔法",
+    "turningPoints": [
+      {
+        "name": "流星雨之夜",
+        "time": "10岁",
+        "description": "在观测流星雨时与家人失散，独自在星空下度过一夜",
+        "impact": "从此与星空建立了特殊的连接，魔法天赋觉醒"
+      },
+      {
+        "name": "星月祭典",
+        "time": "18岁",
+        "description": "在成年礼上成功召唤出星月之力",
+        "impact": "正式被认可为星象法师，获得家族法杖"
+      }
+    ],
+    "adventures": [
+      "寻找失落的星象古籍",
+      "帮助村庄解决异常星象问题",
+      "与黑暗星术师对抗"
+    ],
+    "currentLife": "在星月塔研究古代星象，偶尔外出帮助需要的人",
+    "currentResidence": "新东京市科技园区",
+    "significantEvents": [
+      {
+        "name": "父亲去世",
+        "year": "2016",
+        "description": "立志成为网络安全专家"
+      }
+    ]
+  },
+  "skills": {
+    "occupation": "网络安全专家",
+    "skills": [
+      {
+        "name": "网络安全",
+        "description": "精通网络安全技术",
+        "level": "expert",
+        "source": "专业学习",
+        "isSpecialAbility": false
+      },
+      {
+        "name": "编程",
+        "description": "多种编程语言",
+        "level": "advanced",
+        "source": "长期实践",
+        "isSpecialAbility": false
+      }
+    ],
+    "weaknesses": [
+      "阳光过强时会削弱魔法力量",
+      "不擅长近身战斗",
+      "对星空过度依赖"
+    ],
+    "limitations": [
+      "需要星空可见才能使用最强魔法",
+      "每月满月时力量最强，新月时最弱"
+    ],
+    "combatStyle": "远程魔法攻击，注重策略和预判",
+    "toolProficiency": "精通各种星象仪器和魔法道具"
+  },
+  "relationships": {
+    "connections": [
+      {
+        "targetName": "星辉",
+        "targetId": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+        "type": "family",
+        "strength": 5,
+        "description": "亲哥哥，虽然职业不同但关系亲密",
+        "sharedMemories": [
+          "一起观测流星雨",
+          "在魔法学院互相照顾"
+        ]
+      },
+      {
+        "targetName": "艾莉丝",
+        "type": "best-friend",
+        "strength": 4,
+        "description": "同为魔法学院的同学，火焰魔法师",
+        "sharedMemories": [
+          "一起完成毕业课题",
+          "共同对抗黑暗势力"
+        ]
+      },
+      {
+        "targetName": "暗影术师",
+        "type": "rival",
+        "strength": 3,
+        "description": "追求黑暗星象力量的对手",
+        "sharedMemories": [
+          "多次魔法对决",
+          "争夺古代星象古籍"
+        ]
+      }
+    ]
+  },
+  "lore": {
+    "universe": "星月幻想世界",
+    "species": "人类（带有星象魔法天赋）",
+    "socialStatus": "星象法师贵族",
+    "faction": "星月联盟",
+    "religion": "星月信仰",
+    "philosophy": "万物皆与星空相连，平衡是宇宙的真理",
+    "worldSetting": "2025年赛博朋克新东京",
+    "importantItems": [
+      "父亲的加密硬盘"
+    ],
+    "secrets": [
+      "追踪父亲死亡真相"
+    ]
+  },
+  "additionalInfo": {
+    "hobbies": [
+      "观测星空",
+      "阅读古代文献",
+      "绘制星图",
+      "照顾魔法植物"
+    ],
+    "dislikes": [
+      "阴天看不到星星",
+      "嘈杂的环境",
+      "破坏星空平衡的行为"
+    ],
+    "habits": [
+      "每晚观测星空",
+      "随身携带星象笔记",
+      "轻声自言自语"
+    ],
+    "dreams": [
+      "解开所有星象秘密",
+      "建立星象图书馆",
+      "找到命运中的伴侣"
+    ],
+    "motto": "在星空下，我们都是星辰的孩子",
+    "tags": [
+      "星象法师",
+      "魔法",
+      "幻想",
+      "内向",
+      "学者"
+    ]
+  },
+  "media": {
+    "assets": [
+      {
+        "type": "avatar",
+        "url": "https://example.com/images/luna-avatar.jpg",
+        "description": "Luna 的头像，银色长发紫色眼睛",
+        "isOfficial": true,
+        "creator": "官方画师"
+      },
+      {
+        "type": "full-body",
+        "url": "https://example.com/images/luna-fullbody.jpg",
+        "description": "Luna 穿着星月法师袍的全身像",
+        "isOfficial": true,
+        "creator": "官方画师"
+      },
+      {
+        "type": "reference",
+        "url": "https://example.com/images/luna-reference.png",
+        "description": "角色设计参考图",
+        "isOfficial": true,
+        "creator": "角色设计师"
+      }
+    ]
+  },
+  "metadata": {
+    "creatorInfo": {
+      "name": "星辰创作者",
+      "contact": "creator@stardust.com"
+    },
+    "versionHistory": [
+      {
+        "version": "1.0.0",
+        "date": "2025-12-15T10:30:00.000Z",
+        "changes": [
+          "初始角色创建"
+        ]
+      },
+      {
+        "version": "1.0.1",
+        "date": "2025-12-15T14:45:00.000Z",
+        "changes": [
+          "添加了更多性格细节",
+          "更新了技能描述"
+        ]
+      }
+    ],
+    "license": {
+      "type": "Creative Commons Attribution-NonCommercial",
+      "allowsFanWorks": true,
+      "description": "允许非商业性的同人创作，需注明原作者"
+    },
+    "links": [
+      {
+        "platform": "个人网站",
+        "url": "https://stardust.com/luna"
+      },
+      {
+        "platform": "社交媒体",
+        "url": "https://twitter.com/luna_starfall"
+      }
+    ],
+    "customMetadata": {
+      "favoriteColor": "紫色",
+      "birthSeason": "冬季",
+      "magicAffinity": "星象"
+    },
+    "tags": [
+      "科幻",
+      "赛博朋克",
+      "女性"
+    ]
+  }
+}

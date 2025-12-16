@@ -28,14 +28,16 @@ const Home: FC = () => {
             帮助创作者系统化地管理角色信息，并生成精美的数字名片。
           </p>
           <div className="hero-actions">
-            <Link to="/components">
+            <Link to="/data-demo">
               <Button variant="primary" size="lg">
+                测试数据服务
+              </Button>
+            </Link>
+            <Link to="/components">
+              <Button variant="outline" size="lg">
                 查看组件库
               </Button>
             </Link>
-            <Button variant="outline" size="lg">
-              了解更多
-            </Button>
           </div>
         </div>
         <div className="hero-visual">
@@ -232,6 +234,7 @@ const Home: FC = () => {
               <h4 className="link-group-title">项目</h4>
               <Link to="/" className="footer-link">主页</Link>
               <Link to="/components" className="footer-link">组件库</Link>
+              <Link to="/data-demo" className="footer-link">数据服务</Link>
               <a href="#" className="footer-link">文档</a>
             </div>
 
@@ -249,7 +252,7 @@ const Home: FC = () => {
             © 2025 CharaVerse. 基于 React + TypeScript 构建。
           </p>
           <p className="version">
-            当前版本: 0.1.0 | 阶段 2: 基础 UI 组件库
+            当前版本: 0.1.0 | 阶段 3: 数据服务层
           </p>
         </div>
       </footer>
