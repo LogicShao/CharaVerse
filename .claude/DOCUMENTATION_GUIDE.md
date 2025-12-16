@@ -12,9 +12,11 @@
 │   ├── PROJECT_SUMMARY.md                # 项目大纲摘要
 │   └── DOCUMENTATION_GUIDE.md            # 本文档
 │
-├── IMPLEMENTATION_PLAN.md     # 完整实施计划（10阶段）
-├── COMPLETED_STAGES.md        # 阶段完成记录
-├── PROJECT.md                 # 详细项目设计文档
+├── docs/                       # 项目文档目录
+│   ├── IMPLEMENTATION_PLAN.md # 完整实施计划（10阶段）
+│   ├── COMPLETED_STAGES.md    # 阶段完成记录
+│   └── PROJECT.md             # 详细项目设计文档
+│
 └── README.md                  # 项目说明
 ```
 
@@ -27,7 +29,7 @@
 - 获取核心信息
 
 ### 2. 详细规划时
-**读取完整文档**（根目录文件）：
+**读取完整文档**（`docs/` 目录下文件）：
 - 开始新阶段前
 - 需要完整任务清单时
 - 核对详细设计时
@@ -92,16 +94,16 @@
 
 ### 更新流程
 1. **完成阶段时**：
-   - 更新 `COMPLETED_STAGES.md`
+   - 更新 `docs/COMPLETED_STAGES.md`
    - 更新 `.claude/COMPLETED_STAGES_SUMMARY.md`
    - 更新 `.claude/CLAUDE.md` 中的当前状态
 
 2. **修改计划时**：
-   - 更新 `IMPLEMENTATION_PLAN.md`
+   - 更新 `docs/IMPLEMENTATION_PLAN.md`
    - 更新 `.claude/IMPLEMENTATION_PLAN_SUMMARY.md`
 
 3. **设计变更时**：
-   - 更新 `PROJECT.md`
+   - 更新 `docs/PROJECT.md`
    - 更新 `.claude/PROJECT_SUMMARY.md`
 
 ### 版本控制
@@ -109,18 +111,6 @@
 - 摘要文件随主文档一起更新
 - 保持摘要与完整文档的一致性
 
-## 📊 当前状态跟踪
-
-### 开发阶段
-- **当前阶段**：阶段 1 - TypeScript 类型系统建设
-- **开始日期**：2025-12-15
-- **预计完成**：进行中
-
-### 最近更新
-- 2025-12-15：创建文档优化体系
-- 2025-12-15：完成阶段 0（项目环境配置）
-- 2025-12-15：建立 AI 记忆优化结构
-
 ---
 
-**提示**：本指南旨在优化 AI 辅助开发体验，确保关键信息易于访问，同时保持文档组织的清晰性。
+**提示**：本指南旨在优化 AI 辅助开发体验，确保关键信息易于访问，同时保持文档组织的清晰性。当前开发状态请参考 `.claude/CLAUDE.md` 文档。

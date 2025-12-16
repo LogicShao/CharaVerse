@@ -11,12 +11,12 @@
 ### ✅ 已完成阶段
 - **阶段 0**：项目环境配置与初始化（已完成）
 - **阶段 1**：TypeScript 类型系统建设（已完成）
+- **阶段 2**：基础 UI 组件库（已完成）
 
 ### 🔄 当前阶段
-- **阶段 2**：基础 UI 组件库（待开始）
+- **阶段 3**：数据服务层（待开始）
 
 ### 📋 后续阶段
-- **阶段 2**：基础 UI 组件库
 - **阶段 3**：数据服务层
 - **阶段 4**：OC 列表页面
 - **阶段 5**：OC 详情页面
@@ -25,49 +25,58 @@
 - **阶段 8**：UI 优化与响应式设计
 - **阶段 9**：测试与性能优化
 
-## 阶段 1 详细任务（已完成）
+## 阶段 2 详细任务（已完成）
 
 ### 目标
-定义完整的 OC 数据模型类型系统，为后续开发提供类型安全保障
+构建可复用的基础 UI 组件，为后续页面开发打下基础
 
 ### 任务清单
-1. ✅ 创建基础类型和枚举（`src/types/enums.ts`）- 15+ 个枚举类型和类型别名
-2. ✅ 定义数据模型接口（`src/types/character.ts`）- 完整的 11 个部分接口设计
-3. ✅ 创建 Zod Schema 用于运行时验证（`src/schemas/character.schema.ts`）- 包含所有字段验证规则
-4. ✅ 编写类型工具函数（`src/types/utils.ts`）- 类型守卫和转换工具
-5. ✅ 创建示例数据（`data/characters/example.json`）- 完整示例角色 "Luna Starfall"
+1. ✅ 创建设计系统基础（`src/styles/variables.css`）- 完整的 CSS 变量系统
+2. ✅ 开发基础组件（Button、Card、Input、Tag）
+3. ✅ 创建组件测试页面（ComponentShowcase.tsx）
+4. ✅ 配置全局样式（global.css）
 
 ### 验收标准
-- ✅ 所有类型定义无 TypeScript 错误（通过 `npx tsc --noEmit` 验证）
-- ✅ Zod Schema 能够正确验证示例数据（通过验证脚本测试）
-- ✅ 类型系统覆盖 PROJECT.md 中描述的所有字段
-- ✅ 示例数据完整且通过验证
-- ✅ 工具函数工作正常，类型守卫有效
+- ✅ 所有组件在 ComponentShowcase 页面中正确渲染
+- ✅ 组件支持必要的 props 和事件
+- ✅ 组件具有良好的视觉效果和交互反馈
+- ✅ 支持 Light/Dark 主题切换（变量已预留）
+- ✅ TypeScript 类型定义完整
 
 ### 输出文件
-- `src/types/enums.ts` - 基础类型和枚举定义
-- `src/types/character.ts` - 数据模型接口定义
-- `src/types/utils.ts` - 类型工具函数
-- `src/schemas/character.schema.ts` - Zod Schema 验证
-- `data/characters/example.json` - 完整示例数据
-- `tests/type-system.spec.ts` - 类型系统测试用例
+- `src/styles/variables.css` - 设计系统 CSS 变量
+- `src/styles/global.css` - 全局样式
+- `src/components/Button/` - Button 组件
+- `src/components/Card/` - Card 组件
+- `src/components/Input/` - Input 组件
+- `src/components/Tag/` - Tag 组件
+- `src/components/index.ts` - 组件统一导出
+- `src/pages/ComponentShowcase.tsx` - 组件展示页面
 
-## 阶段 2 详细任务（当前）
+## 阶段 3 详细任务（当前）
 
 ### 目标
-创建设计系统基础，开发可复用的 UI 组件库
+实现数据加载、保存、验证等核心功能，为数据展示和编辑提供支持
 
 ### 任务清单
-1. 创建设计系统基础（CSS 变量、主题）
-2. 开发基础组件（Button、Card、Input、Tag 等）
-3. 创建组件测试页面
-4. 配置全局样式
+1. 创建数据服务类（`src/services/characterService.ts`）
+   - `loadCharacters()`：从本地加载所有角色数据
+   - `loadCharacter(id)`：加载单个角色
+   - `saveCharacter(character)`：保存角色数据
+   - `deleteCharacter(id)`：删除角色
+   - `validateCharacter(character)`：验证角色数据
+2. 实现 LocalStorage 适配器（`src/services/storage/localStorageAdapter.ts`）
+3. 实现 JSON 文件适配器（`src/services/storage/jsonFileAdapter.ts`）
+4. 创建状态管理 Store（`src/stores/characterStore.ts`）
+5. 创建 Mock 数据（3-5 个示例角色）
+6. 编写数据服务测试页面（`src/pages/DataServiceDemo.tsx`）
 
 ### 验收标准
-- ✅ 设计系统 CSS 变量定义完整
-- ✅ 基础组件功能完整且可复用
-- ✅ 组件测试页面能够展示所有组件
-- ✅ 全局样式配置正确，支持响应式设计
+- ✅ 能够成功加载 Mock 数据并在页面中显示
+- ✅ 数据验证功能正常工作
+- ✅ Store 状态管理正常
+- ✅ LocalStorage 读写功能正常
+- ✅ 没有数据加载错误或类型错误
 
 ## 开发原则
 - 每个阶段独立完整：完成后能够独立运行和调试

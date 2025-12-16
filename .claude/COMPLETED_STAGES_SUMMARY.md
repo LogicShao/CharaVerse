@@ -4,15 +4,12 @@
 
 **文件位置**：`docs/COMPLETED_STAGES.md`
 **最后更新**：2025-12-16
-**已完成阶段**：2个阶段
+**已完成阶段**：3个阶段
 
 ## ✅ 阶段 0：项目环境配置与初始化
 
 ### 完成日期
 2025-12-15
-
-### Git Commit
-*（待用户确认无 bug 后自行 commit）*
 
 ### 实现内容
 - ✅ 安装必要的依赖包
@@ -63,9 +60,6 @@
 ### 完成日期
 2025-12-16
 
-### Git Commit
-*（待用户确认无 bug 后自行 commit）*
-
 ### 实现内容
 - ✅ 创建基础类型和枚举（`src/types/enums.ts`）- 15+ 个枚举类型和类型别名
 - ✅ 定义数据模型接口（`src/types/character.ts`）- 完整的 11 个部分接口设计
@@ -95,6 +89,47 @@
 - 工具函数提供了类型安全的数据操作和验证
 - 所有代码遵循项目编码规范，使用路径别名 `@/` 导入
 
+## ✅ 阶段 2：基础 UI 组件库
+
+### 完成日期
+2025-12-16
+
+### 实现内容
+- ✅ 创建设计系统基础（`src/styles/variables.css`）- 完整的 CSS 变量系统
+- ✅ 开发基础组件（使用 CSS Modules）
+  - `Button` - 5 种变体，3 种尺寸，支持图标和加载状态
+  - `Card` - 3 种变体，支持 Header/Body/Footer 子组件
+  - `Input` - 3 种尺寸，支持验证状态和字符计数
+  - `Tag` - 6 种变体，支持边框模式和可关闭功能
+- ✅ 创建组件展示页面（`src/pages/ComponentShowcase.tsx`）
+- ✅ 配置全局样式（`src/styles/global.css`）
+- ✅ 创建组件导出文件（`src/components/index.ts`）
+
+### 验收结果
+- ✅ 所有组件在 ComponentShowcase 页面中正确渲染
+- ✅ 组件支持必要的 props 和事件
+- ✅ TypeScript 类型定义完整，无类型错误
+- ✅ CSS Modules 正确应用，样式隔离良好
+- ✅ 设计系统变量完整且易于使用
+- ✅ 组件响应式布局正常
+
+### 输出文件
+- `src/styles/variables.css` - 设计系统 CSS 变量
+- `src/styles/global.css` - 全局样式
+- `src/components/Button/` - Button 组件（.tsx, .module.css, .types.ts, index.ts）
+- `src/components/Card/` - Card 组件（.tsx, .module.css, .types.ts, index.ts）
+- `src/components/Input/` - Input 组件（.tsx, .module.css, .types.ts, index.ts）
+- `src/components/Tag/` - Tag 组件（.tsx, .module.css, .types.ts, index.ts）
+- `src/components/index.ts` - 组件统一导出
+- `src/pages/ComponentShowcase.tsx` - 组件展示页面
+
+### 备注
+- 所有组件严格遵循项目编码规范
+- 使用 forwardRef 确保组件可以接收 ref
+- CSS Modules 确保样式隔离，避免全局污染
+- 设计系统变量使得主题定制和维护更加便捷
+- 暗色主题变量已预留，但暂未实现主题切换功能（将在阶段 8 实现）
+
 ## 记录格式说明
 
 每个已完成的阶段按以下格式记录：
@@ -104,17 +139,18 @@
 
 **完成日期**：YYYY-MM-DD
 
-**Git Commit**：`commit-hash` - commit message
-
 **实现内容**：
-- [ ] 任务 1
-- [ ] 任务 2
-- [ ] ...
+- ✅ 任务 1
+- ✅ 任务 2
+- ✅ ...
 
 **验收结果**：
 - ✅ 验收标准 1
 - ✅ 验收标准 2
 - ✅ ...
+
+**输出文件**：
+- 文件路径 - 文件说明
 
 **备注**：
 （可选的额外说明或遇到的问题及解决方案）
@@ -124,7 +160,7 @@
 
 ## 下一阶段
 
-**待开始阶段**：阶段 2 - 基础 UI 组件库
+**待开始阶段**：阶段 3 - 数据服务层
 
 ---
 

@@ -10,8 +10,6 @@
 
 **完成日期**：2025-12-15
 
-**Git Commit**：*（待用户确认无 bug 后自行 commit）*
-
 **实现内容**：
 - ✅ 安装必要的依赖包
   - 状态管理：`zustand`
@@ -62,8 +60,6 @@
 
 **完成日期**：2025-12-16
 
-**Git Commit**：*（待用户确认无 bug 后自行 commit）*
-
 **实现内容**：
 - ✅ 创建基础类型和枚举（`src/types/enums.ts`）
   - 性别、体型、发型、眼睛形状等 15+ 个枚举类型
@@ -112,6 +108,99 @@
 
 ---
 
+### ✅ 阶段 2：基础 UI 组件库
+
+**完成日期**：2025-12-16
+
+**实现内容**：
+- ✅ 创建设计系统基础（`src/styles/variables.css`）
+  - 完整的 CSS 变量定义系统
+  - 颜色系统：主色调、中性色、语义色
+  - 间距系统：0-20 级别的间距变量
+  - 字体系统：字体族、大小、字重、行高
+  - 圆角系统：从 sm 到 full 的圆角规范
+  - 阴影系统：6 级阴影效果
+  - 过渡动画：fast、base、slow 三种速度
+  - Z-Index 层级：dropdown、modal、tooltip 等
+  - 断点系统：mobile、tablet、desktop、wide
+  - 支持 Light/Dark 主题切换（通过 `[data-theme="dark"]`）
+- ✅ 开发基础组件（使用 CSS Modules）
+  - `Button` - 按钮组件
+    - 5 种变体：primary、secondary、outline、ghost、danger
+    - 3 种尺寸：sm、md、lg
+    - 支持加载状态、禁用状态、全宽模式
+    - 支持图标和图标位置配置
+  - `Card` - 卡片容器组件
+    - 3 种变体：default、bordered、elevated
+    - 支持 Header、Body、Footer 子组件
+    - 支持 hoverable 和 clickable 模式
+    - 完整的 TypeScript 类型定义
+  - `Input` - 输入框组件
+    - 支持 label、placeholder、helperText
+    - 3 种尺寸：sm、md、lg
+    - 支持错误状态和错误提示
+    - 支持字符计数器（showCount + maxLength）
+    - 支持必填标识
+  - `Tag` - 标签组件
+    - 6 种变体：default、primary、success、warning、error、info
+    - 支持边框模式（bordered）
+    - 支持可关闭模式（closable）
+    - 完整的点击和关闭事件处理
+- ✅ 创建组件测试页面（`src/pages/ComponentShowcase.tsx`）
+  - 完整展示所有基础组件的各种变体和状态
+  - 交互式演示（输入框输入、标签关闭等）
+  - 响应式布局展示
+- ✅ 配置全局样式（`src/styles/global.css`）
+  - CSS Reset 和基础样式
+  - 应用设计系统变量
+  - 全局字体和排版设置
+- ✅ 创建组件导出文件（`src/components/index.ts`）
+  - 统一导出所有组件，便于使用
+
+**验收结果**：
+- ✅ 所有组件在 ComponentShowcase 页面中正确渲染
+- ✅ 组件支持必要的 props 和事件
+- ✅ 组件具有良好的视觉效果和交互反馈
+- ✅ TypeScript 类型定义完整，无类型错误
+- ✅ CSS Modules 正确应用，样式隔离良好
+- ✅ 设计系统变量完整且易于使用
+- ✅ 组件响应式布局正常
+
+**输出文件**：
+- `src/styles/variables.css` - 设计系统 CSS 变量
+- `src/styles/global.css` - 全局样式
+- `src/components/Button/Button.tsx` - Button 组件实现
+- `src/components/Button/Button.module.css` - Button 样式
+- `src/components/Button/Button.types.ts` - Button 类型定义
+- `src/components/Button/index.ts` - Button 导出
+- `src/components/Card/Card.tsx` - Card 组件实现
+- `src/components/Card/Card.module.css` - Card 样式
+- `src/components/Card/Card.types.ts` - Card 类型定义
+- `src/components/Card/index.ts` - Card 导出
+- `src/components/Input/Input.tsx` - Input 组件实现
+- `src/components/Input/Input.module.css` - Input 样式
+- `src/components/Input/Input.types.ts` - Input 类型定义
+- `src/components/Input/index.ts` - Input 导出
+- `src/components/Tag/Tag.tsx` - Tag 组件实现
+- `src/components/Tag/Tag.module.css` - Tag 样式
+- `src/components/Tag/Tag.types.ts` - Tag 类型定义
+- `src/components/Tag/index.ts` - Tag 导出
+- `src/components/index.ts` - 组件统一导出
+- `src/pages/ComponentShowcase.tsx` - 组件展示页面
+- `src/pages/Home.tsx` - 首页（更新为链接到组件展示页面）
+- `src/router/routes.tsx` - 路由配置
+
+**备注**：
+- 所有组件严格遵循项目编码规范
+- 使用 forwardRef 确保组件可以接收 ref
+- CSS Modules 确保样式隔离，避免全局污染
+- 设计系统变量使得主题定制和维护更加便捷
+- 组件 API 设计直观，易于使用和扩展
+- 暗色主题变量已预留，但暂未实现主题切换功能（将在阶段 8 实现）
+- 未实现的组件（Avatar、Modal、Tabs、Loading）将在后续阶段根据实际需要补充
+
+---
+
 ## 记录格式说明
 
 每个已完成的阶段将按以下格式记录：
@@ -121,17 +210,18 @@
 
 **完成日期**：YYYY-MM-DD
 
-**Git Commit**：`commit-hash` - commit message
-
 **实现内容**：
-- [ ] 任务 1
-- [ ] 任务 2
-- [ ] ...
+- ✅ 任务 1
+- ✅ 任务 2
+- ✅ ...
 
 **验收结果**：
 - ✅ 验收标准 1
 - ✅ 验收标准 2
 - ✅ ...
+
+**输出文件**：
+- 文件路径 - 文件说明
 
 **备注**：
 （可选的额外说明或遇到的问题及解决方案）
@@ -141,6 +231,6 @@
 
 ## 下一阶段
 
-**待开始阶段**：阶段 2 - 基础 UI 组件库
+**待开始阶段**：阶段 3 - 数据服务层
 
 **预计开始日期**：待确认

@@ -1,0 +1,134 @@
+/**
+ * Card 组件样式
+ */
+
+/* ==================== 基础卡片样式 ==================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+/* ==================== 卡片变体 ==================== */
+
+/* Default 默认样式 */
+.card.default {
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Bordered 边框样式 */
+.card.bordered {
+  border: 2px solid var(--border-primary);
+}
+
+/* Elevated 抬升样式 */
+.card.elevated {
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* Flat 扁平样式 */
+.card.flat {
+  border: 1px solid var(--border-primary);
+  box-shadow: none;
+}
+
+/* ==================== 交互状态 ==================== */
+
+/* 可悬停 */
+.card.hoverable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 可点击 */
+.card.clickable {
+  cursor: pointer;
+}
+
+.card.clickable:hover {
+  border-color: var(--color-primary-600);
+}
+
+.card.clickable:active {
+  transform: translateY(0);
+}
+
+/* ==================== 卡片头部 ==================== */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.headerContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--spacing-1);
+  line-height: var(--line-height-normal);
+}
+
+.extra {
+  margin-left: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+/* ==================== 卡片主体 ==================== */
+
+.body {
+  flex: 1;
+  padding: var(--spacing-5);
+}
+
+/* ==================== 卡片底部 ==================== */
+
+.footer {
+  padding: var(--spacing-4) var(--spacing-5);
+  border-top: 1px solid var(--border-primary);
+  background-color: var(--bg-secondary);
+}
+
+/* ==================== 响应式 ==================== */
+
+@media (max-width: 640px) {
+  .header {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .body {
+    padding: var(--spacing-4);
+  }
+
+  .footer {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-xs);
+  }
+}

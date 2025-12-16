@@ -1,0 +1,222 @@
+/**
+ * Button 组件样式
+ */
+
+/* ==================== 基础按钮样式 ==================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ==================== 按钮尺寸 ==================== */
+
+.button.sm {
+  height: 32px;
+  padding: 0 var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.button.md {
+  height: 40px;
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-base);
+}
+
+.button.lg {
+  height: 48px;
+  padding: 0 var(--spacing-6);
+  font-size: var(--font-size-lg);
+}
+
+/* ==================== 按钮变体 ==================== */
+
+/* Primary 主要按钮 */
+.button.primary {
+  color: white;
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.button.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.button.primary:active:not(:disabled) {
+  background-color: var(--color-primary-800);
+  border-color: var(--color-primary-800);
+}
+
+/* Secondary 次要按钮 */
+.button.secondary {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border-color: var(--border-primary);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+  border-color: var(--border-secondary);
+}
+
+.button.secondary:active:not(:disabled) {
+  background-color: var(--bg-active);
+}
+
+/* Outline 轮廓按钮 */
+.button.outline {
+  color: var(--color-primary-600);
+  background-color: transparent;
+  border-color: var(--color-primary-600);
+}
+
+.button.outline:hover:not(:disabled) {
+  color: white;
+  background-color: var(--color-primary-600);
+}
+
+.button.outline:active:not(:disabled) {
+  background-color: var(--color-primary-700);
+}
+
+/* Ghost 幽灵按钮 */
+.button.ghost {
+  color: var(--text-primary);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.button.ghost:hover:not(:disabled) {
+  background-color: var(--bg-hover);
+}
+
+.button.ghost:active:not(:disabled) {
+  background-color: var(--bg-active);
+}
+
+/* Danger 危险按钮 */
+.button.danger {
+  color: white;
+  background-color: var(--color-error-600);
+  border-color: var(--color-error-600);
+}
+
+.button.danger:hover:not(:disabled) {
+  background-color: var(--color-error-700);
+  border-color: var(--color-error-700);
+}
+
+.button.danger:active:not(:disabled) {
+  background-color: var(--color-error-800);
+  border-color: var(--color-error-800);
+}
+
+/* ==================== 全宽按钮 ==================== */
+
+.button.fullWidth {
+  width: 100%;
+}
+
+/* ==================== 加载状态 ==================== */
+
+.button.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* 主要按钮加载状态颜色 */
+.button.primary.loading::after,
+.button.danger.loading::after {
+  border-color: white;
+  border-right-color: transparent;
+}
+
+/* ==================== 图标 ==================== */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconLeft {
+  order: -1;
+}
+
+.iconRight {
+  order: 1;
+}
+
+/* ==================== 动画 ==================== */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== 响应式 ==================== */
+
+@media (max-width: 640px) {
+  .button.sm {
+    height: 28px;
+    padding: 0 var(--spacing-2);
+    font-size: var(--font-size-xs);
+  }
+
+  .button.md {
+    height: 36px;
+    padding: 0 var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .button.lg {
+    height: 44px;
+    padding: 0 var(--spacing-5);
+    font-size: var(--font-size-base);
+  }
+}
