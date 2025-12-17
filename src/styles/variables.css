@@ -47,20 +47,30 @@
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
   --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
   --color-success-500: #22c55e;
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
 
   --color-warning-50: #fffbeb;
   --color-warning-100: #fef3c7;
   --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
   --color-warning-500: #f59e0b;
   --color-warning-600: #d97706;
   --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
 
   --color-error-50: #fef2f2;
   --color-error-100: #fee2e2;
   --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
   --color-error-500: #ef4444;
   --color-error-600: #dc2626;
   --color-error-700: #b91c1c;
@@ -68,9 +78,39 @@
   --color-error-900: #7f1d1d;
 
   --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-200: #bfdbfe;
+  --color-info-300: #93c5fd;
+  --color-info-400: #60a5fa;
   --color-info-500: #3b82f6;
   --color-info-600: #2563eb;
   --color-info-700: #1d4ed8;
+  --color-info-800: #1e40af;
+  --color-info-900: #1e3a8a;
+
+  /* 粉色系 (用于情感/浪漫等语义色) */
+  --color-pink-50: #fff1f2;
+  --color-pink-100: #ffe4e6;
+  --color-pink-200: #fecdd3;
+  --color-pink-300: #fda4af;
+  --color-pink-400: #fb7185;
+  --color-pink-500: #f43f5e;
+  --color-pink-600: #e11d48;
+  --color-pink-700: #be123c;
+  --color-pink-800: #9f1239;
+  --color-pink-900: #881337;
+
+  /* 辅助色（secondary）- 用于标签、次要按钮等 */
+  --color-secondary-50: #faf5ff;
+  --color-secondary-100: #f3e8ff;
+  --color-secondary-200: #e9d5ff;
+  --color-secondary-300: #d8b4fe;
+  --color-secondary-400: #c084fc;
+  --color-secondary-500: #a855f7;
+  --color-secondary-600: #9333ea;
+  --color-secondary-700: #7e22ce;
+  --color-secondary-800: #6b21a8;
+  --color-secondary-900: #581c87;
 
   /* ==================== 语义化颜色映射 ==================== */
 
@@ -118,6 +158,8 @@
                'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono',
                Consolas, 'Courier New', monospace;
+  --font-family-mono: var(--font-mono); /* compatibility alias for older components */
+  --font-family-base: var(--font-sans); /* compatibility alias: used by some components expecting --font-family-base */
 
   /* 字体大小 */
   --font-size-xs: 0.75rem;    /* 12px */

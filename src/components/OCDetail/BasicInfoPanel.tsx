@@ -40,7 +40,9 @@ export const BasicInfoPanel: FC<BasicInfoPanelProps> = ({ character, className }
               }}
             />
           ) : (
-            <div className={styles.profileImagePlaceholder}>暂无头像</div>
+            <div className={styles.profileImagePlaceholder}>
+              {displayName.charAt(0)}
+            </div>
           )}
         </div>
 

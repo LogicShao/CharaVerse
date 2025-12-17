@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" /> <!-- Indigo -->
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" /> <!-- Pink -->
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景卡片 (暗示堆叠/库) -->
+  <rect x="55" y="40" width="100" height="130" rx="15" fill="#e0e7ff" opacity="0.5" transform="rotate(10 105 105)" />
+
+  <!-- 主卡片 -->
+  <rect x="50" y="35" width="100" height="130" rx="15" fill="url(#grad1)" stroke="white" stroke-width="2" />
+
+  <!-- 核心星光 (OC的灵魂) -->
+  <path d="M100 65 C100 65 105 90 125 100 C105 110 100 135 100 135 C100 135 95 110 75 100 C95 90 100 65 100 65 Z" fill="white" filter="url(#glow)"/>
+</svg>

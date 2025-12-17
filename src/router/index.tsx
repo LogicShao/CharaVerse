@@ -13,6 +13,8 @@ const ComponentShowcase = lazy(() => import('@/pages/ComponentShowcase'))
 const DataServiceDemo = lazy(() => import('@/pages/DataServiceDemo'))
 const OCListPage = lazy(() => import('@/pages/OCListPage'))
 const OCDetailPage = lazy(() => import('@/pages/OCDetailPage'))
+const OCEditPage = lazy(() => import('@/pages/OCEditPage'))
+const OCCreatePage = lazy(() => import('@/pages/OCCreatePage'))
 
 // 加载中组件
 const LoadingFallback: FC = () => (
@@ -78,6 +80,24 @@ const router = createBrowserRouter([
       </Suspense>
     ),
     errorElement: <ErrorBoundary error={new Error('详情页面加载失败')} />
+  },
+  {
+    path: '/characters/:id/edit',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <OCEditPage />
+      </Suspense>
+    ),
+    errorElement: <ErrorBoundary error={new Error('编辑页面加载失败')} />
+  },
+  {
+    path: '/create',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <OCCreatePage />
+      </Suspense>
+    ),
+    errorElement: <ErrorBoundary error={new Error('创建页面加载失败')} />
   },
   {
     path: '/home',

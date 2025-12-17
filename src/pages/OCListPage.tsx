@@ -138,10 +138,8 @@ export const OCListPage: FC = () => {
   }, [initializeFromMockData])
 
   const handleCreateNew = useCallback(() => {
-    // 阶段6才实现创建功能，暂时显示提示
-    alert('创建角色功能将在阶段6（数据编辑功能）中实现')
-    // navigate('/characters/new') // 暂时注释掉
-  }, [])
+    navigate('/create')
+  }, [navigate])
 
   return (
     <div className={styles.container}>

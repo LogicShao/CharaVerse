@@ -22,7 +22,7 @@
       "biologicalAge": 22,
       "height": 185,
       "weight": 72,
-      "bodyType": "lean",
+      "bodyType": "slim",
       "skinTone": "fair",
       "skinTexture": "光滑细腻"
     },
@@ -37,9 +37,9 @@
       "lipThickness": "适中"
     },
     "hair": {
-      "primaryColor": "platinum",
+      "primaryColor": "silver",
       "secondaryColor": "purple",
-      "length": "waist",
+      "length": "very-long",
       "style": "wavy",
       "description": "银白色长发",
       "texture": "柔软顺滑"

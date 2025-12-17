@@ -1,0 +1,86 @@
+/* BasicInfoEditor 样式 */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--color-neutral-200);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.nicknamesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.nicknameItem {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.nicknameInput {
+  flex: 1;
+}
+
+.removeButton {
+  padding: var(--spacing-2);
+  color: var(--color-error-600);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeButton:hover {
+  background-color: var(--color-error-50);
+}
+
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary-600);
+  background-color: transparent;
+  border: 1px dashed var(--color-primary-300);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.addButton:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-400);
+}

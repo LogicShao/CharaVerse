@@ -1,0 +1,123 @@
+/* FormColorPicker 样式 */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.container.fullWidth {
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.required {
+  color: var(--color-error-500);
+}
+
+.pickerWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.colorInput {
+  width: 60px;
+  height: 40px;
+  padding: 4px;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-base);
+  background-color: var(--color-neutral-50);
+}
+
+.colorInput:hover:not(:disabled) {
+  border-color: var(--color-neutral-400);
+}
+
+.colorInput:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.colorInput.error {
+  border-color: var(--color-error-500);
+}
+
+.colorInput:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.valueDisplay {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.colorPreview {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-neutral-300);
+  flex-shrink: 0;
+}
+
+.colorValue {
+  font-size: var(--font-size-sm);
+  /* Provide a fallback list so the property can be resolved and there's a generic-family fallback */
+  font-family: var(--font-family-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace);
+  color: var(--color-neutral-700);
+  text-transform: uppercase;
+}
+
+.presetColors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+}
+
+.presetColor {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.presetColor:hover {
+  border-color: var(--color-neutral-400);
+  transform: scale(1.1);
+}
+
+.presetColor.selected {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 2px var(--color-primary-100);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.helperText {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.errorText {
+  color: var(--color-error-600);
+}

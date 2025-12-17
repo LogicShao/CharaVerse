@@ -44,3 +44,7 @@ export type { FilterPanelProps, FilterOptions } from './FilterPanel'
 // OCGrid 组件
 export { OCGrid } from './OCGrid'
 export type { OCGridProps } from './OCGrid'
+
+// Tabs 组件
+export { Tabs } from './Tabs'
+export type { TabsProps, TabItem } from './Tabs'

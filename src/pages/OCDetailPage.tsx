@@ -35,10 +35,9 @@ export const OCDetailPage: FC = () => {
     navigate('/')
   }
 
-  // 编辑角色（暂时占位，阶段6将实现编辑功能）
+  // 编辑角色
   const handleEdit = () => {
-    // TODO: 阶段6实现编辑功能
-    console.log('编辑功能将在阶段6实现')
+    navigate(`/characters/${id}/edit`)
   }
 
   // 错误状态

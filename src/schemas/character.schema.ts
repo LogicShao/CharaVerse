@@ -302,7 +302,9 @@ export const metadataSchema = z.object({
       })
     )
     .default([]),
-  customMetadata: z.record(z.string(), z.any()).default({}),
+  // Use z.unknown() instead of z.any() to avoid TypeScript `any` in inferred types.
+  // The inferred type will be Record<string, unknown>, which is safer than `any`.
+  customMetadata: z.record(z.string(), z.unknown()).default({}),
 })
 
 // ============= 完整角色 Schema =============
@@ -370,6 +372,7 @@ export type Lore = z.infer<typeof loreSchema>
 export type AdditionalInfo = z.infer<typeof additionalInfoSchema>
 export type MediaAssets = z.infer<typeof mediaAssetsSchema>
 export type Metadata = z.infer<typeof metadataSchema>
+export type CustomMetadata = Record<string, unknown>
 export type Character = z.infer<typeof characterSchema>
 export type CharacterPreview = z.infer<typeof characterPreviewSchema>
 export type CharacterInput = z.infer<typeof characterInputSchema>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>调试工具 - CharaVerse</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      background: #f5f5f5;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    h2 { color: #666; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
+    .success { color: #059669; }
+    .error { color: #dc2626; }
+    .warning { color: #d97706; }
+    pre {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    button {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #4f46e5;
+    }
+    button.danger {
+      background: #dc2626;
+    }
+    button.danger:hover {
+      background: #b91c1c;
+    }
+    .info-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    .char-card {
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+    .char-card.valid {
+      border-left: 4px solid #059669;
+    }
+    .char-card.invalid {
+      border-left: 4px solid #dc2626;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 CharaVerse 调试工具</h1>
+
+  <div class="section">
+    <h2>1. LocalStorage 检查</h2>
+    <button onclick="checkLocalStorage()">检查 LocalStorage</button>
+    <button onclick="clearLocalStorage()" class="danger">清空 LocalStorage</button>
+    <div id="localStorageResult"></div>
+  </div>
+
+  <div class="section">
+    <h2>2. JSON 文件加载测试</h2>
+    <button onclick="testJsonFiles()">测试加载 JSON 文件</button>
+    <div id="jsonFilesResult"></div>
+  </div>
+
+  <div class="section">
+    <h2>3. 验证测试</h2>
+    <button onclick="testValidation()">测试 Zod 验证</button>
+    <div id="validationResult"></div>
+  </div>
+
+  <div class="section">
+    <h2>4. 完整流程测试</h2>
+    <button onclick="testFullFlow()">测试完整加载流程</button>
+    <div id="fullFlowResult"></div>
+  </div>
+
+  <script type="module">
+    import { safeValidateCharacter } from '/src/schemas/character.schema.ts'
+    import { characterService } from '/src/services/characterService.ts'
+
+    window.safeValidateCharacter = safeValidateCharacter
+    window.characterService = characterService
+
+    window.checkLocalStorage = function() {
+      const result = document.getElementById('localStorageResult')
+      result.innerHTML = '<h3>LocalStorage 内容：</h3>'
+
+      const keys = Object.keys(localStorage).filter(key => key.startsWith('charaverse'))
+
+      if (keys.length === 0) {
+        result.innerHTML += '<p class="warning">⚠️ LocalStorage 中没有 CharaVerse 数据</p>'
+        result.innerHTML += '<div class="info-box">这是正常的，如果你已经清空了缓存。点击主页的"加载示例数据"按钮来加载角色。</div>'
+      } else {
+        result.innerHTML += `<p class="success">✅ 找到 ${keys.length} 个 CharaVerse 条目</p>`
+
+        keys.forEach(key => {
+          try {
+            const value = localStorage.getItem(key)
+            const parsed = JSON.parse(value)
+
+            if (key.includes('_list')) {
+              result.innerHTML += `<div class="char-card"><strong>${key}</strong><pre>${JSON.stringify(parsed, null, 2)}</pre></div>`
+            } else {
+              result.innerHTML += `<div class="char-card"><strong>${key}</strong><br/>角色: ${parsed.basic?.nameCn || parsed.basic?.nameEn || '未知'}</div>`
+            }
+          } catch (e) {
+            result.innerHTML += `<div class="char-card invalid"><strong>${key}</strong><br/><span class="error">解析错误: ${e.message}</span></div>`
+          }
+        })
+      }
+    }
+
+    window.clearLocalStorage = function() {
+      if (!confirm('确定要清空所有 CharaVerse 数据吗？')) return
+
+      const keys = Object.keys(localStorage).filter(key => key.startsWith('charaverse'))
+      keys.forEach(key => localStorage.removeItem(key))
+
+      const result = document.getElementById('localStorageResult')
+      result.innerHTML = '<p class="success">✅ LocalStorage 已清空</p>'
+      result.innerHTML += '<div class="info-box">请刷新主页并点击"加载示例数据"按钮。</div>'
+    }
+
+    window.testJsonFiles = async function() {
+      const result = document.getElementById('jsonFilesResult')
+      result.innerHTML = '<h3>加载 JSON 文件...</h3>'
+
+      const files = [
+        { path: '/data/characters/char-001.json', name: 'char-001 (Aria Morningstar)' },
+        { path: '/data/characters/char-002.json', name: 'char-002 (Silas Nightwind)' },
+        { path: '/data/characters/char-003.json', name: 'char-003 (Lia Dawn)' }
+      ]
+
+      for (const file of files) {
+        try {
+          const response = await fetch(file.path + '?t=' + Date.now()) // 添加时间戳避免缓存
+
+          if (!response.ok) {
+            result.innerHTML += `<div class="char-card invalid">
+              <strong class="error">❌ ${file.name}</strong><br/>
+              HTTP错误: ${response.status} ${response.statusText}
+            </div>`
+            continue
+          }
+
+          const data = await response.json()
+          const charName = data.basic?.nameCn || data.basic?.nameEn || '未知'
+
+          result.innerHTML += `<div class="char-card valid">
+            <strong class="success">✅ ${file.name}</strong><br/>
+            角色名: ${charName}<br/>
+            ID: ${data.basic?.id}<br/>
+            体型: ${data.appearance?.body?.bodyType || 'N/A'}<br/>
+            发长: ${data.appearance?.hair?.length || 'N/A'}
+          </div>`
+        } catch (error) {
+          result.innerHTML += `<div class="char-card invalid">
+            <strong class="error">❌ ${file.name}</strong><br/>
+            错误: ${error.message}
+          </div>`
+        }
+      }
+    }
+
+    window.testValidation = async function() {
+      const result = document.getElementById('validationResult')
+      result.innerHTML = '<h3>验证测试...</h3>'
+
+      const files = [
+        { path: '/data/characters/char-001.json', name: 'char-001' },
+        { path: '/data/characters/char-002.json', name: 'char-002' },
+        { path: '/data/characters/char-003.json', name: 'char-003' }
+      ]
+
+      for (const file of files) {
+        try {
+          const response = await fetch(file.path + '?t=' + Date.now())
+          const data = await response.json()
+
+          const validation = window.safeValidateCharacter(data)
+
+          if (validation.success) {
+            result.innerHTML += `<div class="char-card valid">
+              <strong class="success">✅ ${file.name} 验证通过</strong><br/>
+              角色: ${data.basic.nameCn} (${data.basic.nameEn})
+            </div>`
+          } else {
+            result.innerHTML += `<div class="char-card invalid">
+              <strong class="error">❌ ${file.name} 验证失败</strong><br/>
+              <pre>${JSON.stringify(validation.error.errors, null, 2)}</pre>
+            </div>`
+          }
+        } catch (error) {
+          result.innerHTML += `<div class="char-card invalid">
+            <strong class="error">❌ ${file.name} 处理失败</strong><br/>
+            错误: ${error.message}
+          </div>`
+        }
+      }
+    }
+
+    window.testFullFlow = async function() {
+      const result = document.getElementById('fullFlowResult')
+      result.innerHTML = '<h3>完整流程测试...</h3>'
+
+      try {
+        // 1. 清空 localStorage
+        const keys = Object.keys(localStorage).filter(key => key.startsWith('charaverse'))
+        keys.forEach(key => localStorage.removeItem(key))
+        result.innerHTML += '<p class="success">✅ 步骤1: LocalStorage 已清空</p>'
+
+        // 2. 加载JSON文件
+        const files = [
+          '/data/characters/char-001.json',
+          '/data/characters/char-002.json',
+          '/data/characters/char-003.json'
+        ]
+
+        const characters = []
+        for (const path of files) {
+          const response = await fetch(path + '?t=' + Date.now())
+          const data = await response.json()
+
+          const validation = window.safeValidateCharacter(data)
+          if (validation.success && validation.data) {
+            characters.push(validation.data)
+            result.innerHTML += `<p class="success">✅ 加载并验证通过: ${data.basic.nameCn}</p>`
+          } else {
+            result.innerHTML += `<p class="error">❌ 验证失败: ${path}</p>`
+            result.innerHTML += `<pre>${JSON.stringify(validation.error?.errors, null, 2)}</pre>`
+          }
+        }
+
+        result.innerHTML += `<h3>结果：</h3>`
+        result.innerHTML += `<p><strong>成功加载 ${characters.length} / 3 个角色</strong></p>`
+
+        if (characters.length === 3) {
+          result.innerHTML += '<div class="info-box success">✅ 所有角色都能正常加载和验证！<br/>问题可能在于：<ul><li>浏览器缓存了旧的 JSON 文件（需要硬刷新）</li><li>代码加载逻辑有问题</li></ul></div>'
+        } else {
+          result.innerHTML += '<div class="info-box error">❌ 部分角色验证失败，请查看上面的错误信息。</div>'
+        }
+
+        // 显示成功加载的角色
+        result.innerHTML += '<h3>成功加载的角色：</h3>'
+        characters.forEach((char, index) => {
+          result.innerHTML += `<div class="char-card valid">
+            <strong>${index + 1}. ${char.basic.nameCn} (${char.basic.nameEn})</strong><br/>
+            ID: ${char.basic.id}<br/>
+            性别: ${char.basic.gender}<br/>
+            职业: ${char.skills.occupation}
+          </div>`
+        })
+
+      } catch (error) {
+        result.innerHTML += `<p class="error">❌ 测试失败: ${error.message}</p>`
+        result.innerHTML += `<pre>${error.stack}</pre>`
+      }
+    }
+  </script>
+</body>
+</html>
